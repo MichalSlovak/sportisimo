@@ -16,8 +16,8 @@ session:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=test'
-	user:
+	dsn: 'mysql:host=127.0.0.1;dbname=sportisimo'
+	user: root
 	password:
 	options:
 		lazy: yes
@@ -25,6 +25,7 @@ database:
 
 services:
 	- App\Model\UserManager
+	- App\Model\BrandsRepository
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory
 	- App\Forms\SignUpFormFactory

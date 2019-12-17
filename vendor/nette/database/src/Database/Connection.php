@@ -158,6 +158,7 @@ class Connection
 	public function query(string $sql, ...$params): ResultSet
 	{
 		[$this->sql, $params] = $this->preprocess($sql, ...$params);
+
 		try {
 			$result = new ResultSet($this, $this->sql, $params);
 		} catch (PDOException $e) {
@@ -166,6 +167,7 @@ class Connection
 		}
 		$this->onQuery($this, $result);
 		return $result;
+
 	}
 
 
