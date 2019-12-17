@@ -1,27 +1,43 @@
-Nette Sandbox
+Sportisimo 
 =============
 
-This is a simple pre-packaged and pre-configured application using the [Nette](https://nette.org)
-that you can use as the starting point for your new applications.
+Zadání: 
 
-[Nette](https://nette.org) is a popular tool for PHP web development.
-It is designed to be the most usable and friendliest as possible. It focuses
-on security and performance and is definitely one of the safest PHP frameworks.
+Požadované funkce:
 
-If you like Nette, **[please make a donation now](https://nette.org/donate)**. Thank you!
+1. Vylistování všech značek
+    - Řazení pomocí názvu značky (vzestupně, sestupně)
+    - Stránkování (včetně změny počtu položek na stránku)
 
+Očekávané výstupy:
 
-Installation
+1. Návrh databáze – v čitelné podobě (ideálně ER diagram) – png, pdf
+2. SQL pro vytvoření a iniciální naplnění databáze
+3. Zdrojové kódy aplikace + composer.json soubor popisující závislosti aplikace
+4. CSS knihovna frameworku Materialize CSS, připojená do aplikace
+5. SASS soubor s vlastními styly (přizpůsobení prvků knihovny Materialize)
+6. Přeložený SASS soubor ve formě CSS, připojený do aplikace
+
+Vzhledem k tomu, že se jedná pouze o backendový vývoj bodům 4-6 jsem nevěnoval takovou pozornost.
+Soustředil jsem se hlavně na realizaci stránkování, změnu počtu položek na stránku
+a řazení dle názvu značky. Demo data jsem čerpal ze stránek https://www.sportisimo.cz/mapa-stranek/ sekce "Značky".
+
+Návrh databáze
 ------------
 
-The best way to install Web Project is using Composer. If you don't have Composer yet,
-download it following [the instructions](https://doc.nette.org/composer). Then use command:
+Vytvořil jsem InnoDB databázi s jednou tabulkou *brands*.
+Všechny ostatní data bud ve vztahu 1:N kdy produkt má pouze jednu značku, ale jedna značka má více produktů. 
+Pak máme v tabulce produktů atribud značka s idznačky. Pro účely úkolu velikost tabulky stačí.
 
-	composer create-project nette/sandbox path/to/install
-	cd path/to/install
+	CREATE TABLE `brands` (
+      `idbrands` int(11) NOT NULL, - připadně autoincrement
+      `created_by` date DEFAULT current_timestamp(),
+      `modify_by` date NOT NULL DEFAULT current_timestamp(),
+      `brands_name` varchar(455) COLLATE utf8_czech_ci NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
-Make directories `temp/` and `log/` writable.
+![alt text](http://url/to/img.png)
 
 
 Web Server Setup
