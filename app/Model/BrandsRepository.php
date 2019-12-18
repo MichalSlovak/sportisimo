@@ -24,8 +24,9 @@ class BrandsRepository
     {
 
         /*
-                bdump($sort);
-                                return $this->database->fetch('
+                ?? 'ASC' nefunguje vložení přes parametr? kde je chyba? "ASC' ?
+
+                                return $this->database->query('
                                         SELECT * FROM brands
                                         WHERE created_by < ?
                                         ORDER BY brands_name ?
